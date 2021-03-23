@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpProvider } from '../providers/http-provider.service';
 import { Observable, Subject } from 'rxjs';
 import { cartList, cartLists, pizzaList } from '../models/pizza-list';
+import { HttpProvider } from '../providers/http-provider.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,9 @@ export class SharedService {
     return this.pizzaLists;
   }
 
-  constructor(private httpProvider: HttpProvider) { }
+  constructor(private httpProvider: HttpProvider) {
+    this.pizzaLists && this.pizzaLists.length > 0 ? this.isCartVisble.next(true) : '';
+  }
   getPizzaInfo(): Observable<any> {
     let url = 'https://run.mocky.io/v3/ec196a02-aaf4-4c91-8f54-21e72f241b68'
     return this.httpProvider.get(url);
@@ -30,6 +32,7 @@ export class SharedService {
       this.cartLists[index].selections.push(arg.selection);
       this.cartLists[index].quantity++;
       this.cartLists[index].price += arg.price;
+      this.isCartVisble.next(true) 
     }
     else {
       let response: cartLists = {

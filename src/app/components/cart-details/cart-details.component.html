@@ -1,7 +1,7 @@
 <div class="pizza-img">
     <div class="cart">
         <div class="cart-title">
-            CART
+            CART DETAILS
         </div>
         <div *ngFor="let cartList of cartLists" class="cart-details">
             <ul class="content title">
@@ -10,8 +10,7 @@
             </ul>
             <ul>
                 <span class="quantity"> QUANTITY {{cartList.quantity}}</span>
-                <button mat-raised-button color="accent" (click)="openDialog(cartList)">ADD <mat-icon>add_shopping_cart
-                    </mat-icon></button>
+                <button mat-raised-button color="accent" (click)="openDialog(cartList)">ADD </button>
             </ul>
             <div class="add-on">
                 <div *ngFor="let selection of cartList.selections" class="content">
