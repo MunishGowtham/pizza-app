@@ -1,0 +1,70 @@
+<div class="sort-item" *ngIf="pizzaLists">
+    <mat-slide-toggle (change)="toggle($event.checked)">VEG</mat-slide-toggle>
+    <mat-form-field appearance="fill">
+        <mat-label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 14 16"
+                style="margin: 0px 0.3rem;">
+                <g fill="none" fill-rule="evenodd" stroke="#aaaaaa" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="1.5">
+                    <path d="M5 1v14l-4-4M9 15V1l4 4"></path>
+                </g>
+            </svg>SORT BY
+        </mat-label>
+        <mat-select [(value)]="selected" (selectionChange)=triggerSelectionChange($event.value)>
+            <mat-option value="rating">RATING - HIGH TO LOW</mat-option>
+            <mat-option value="pricehigh">PRICE - HIGH TO LOW</mat-option>
+            <mat-option value="pricelow">PRICE - LOW TO HIGH</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button *ngIf="selected" matSuffix mat-raised-button aria-label="Clear"
+        (click)="selected=undefined; $event.stopPropagation(); triggerSelectionChange('none')">
+        CLEAR
+    </button>
+</div>
+<div class="pizza-items" *ngIf="pizzaLists">
+    <span class="pizza">Signature Pizzas </span>
+    <span class="pizza-count">{{pizzaLists.length}} Products</span>
+    <button class="checkout" mat-button *ngIf="isCartVisible" matSuffix mat-raised-button [routerLink]="['/cart']">
+        PROCEED TO CART
+    </button>
+</div>
+<div class="pizza-container" *ngIf="pizzaLists">
+    <div *ngFor="let pizzaList of pizzaLists" class="individual-item">
+        <div class="item-image">
+            <img [src]="pizzaList.img_url" class="block w-full" alt="Country Feast" title="Country Feast" width="285"
+                height="200">
+        </div>
+        <div class="pizza-title">{{pizzaList.name}}<span class="ml-2">&nbsp;</span>
+            <span *ngIf="pizzaList.isVeg ; else  nonveg">
+                <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 0 14 14">
+                    <g fill="none" fill-rule="evenodd" transform="translate(0 1)">
+                        <rect width="12.4" height="12.2" x=".5" y=".5" fill="#FFF" stroke="#339A33" stroke-width=".9"
+                            rx="2">
+                        </rect>
+                        <rect width="8" height="7.8" x="2.7" y="2.6" fill="#339A33" rx="3.9"></rect>
+                    </g>
+                </svg>
+            </span>
+        </div>
+        <p class="pizza-description">
+            {{pizzaList.description}}
+        </p>
+        <ngb-rating [rate]="pizzaList.rating" [max]="5" [readonly]="true"></ngb-rating>
+        <div>
+            <span class="price"> ₹{{pizzaList.price}}</span>
+            <button mat-raised-button color="accent" (click)=openDialog(pizzaList)>ADD</button>
+        </div>
+    </div>
+</div>
+<ng-template #nonveg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" viewBox="0 0 14 14">
+        <g fill="none" fill-rule="evenodd" transform="translate(0 1)">
+            <rect width="12.4" height="12.2" x=".5" y=".5" fill="#FFF" stroke="#920E03" stroke-width=".9" rx="2">
+            </rect>
+            <rect width="8" height="7.8" x="2.7" y="2.6" fill="#920E03" rx="3.9"></rect>
+        </g>
+    </svg>
+</ng-template>
+<button class="checkout mb-4" mat-button *ngIf="isCartVisible" matSuffix mat-raised-button [routerLink]="['/cart']">
+    PROCEED TO CART
+</button>

@@ -1,0 +1,25 @@
+<div class="pizza-img">
+    <div class="cart">
+        <div class="cart-title">
+            CART
+        </div>
+        <div *ngFor="let cartList of cartLists" class="cart-details">
+            <ul class="content title">
+                <span>{{cartList.name}}</span>
+                <span>₹{{cartList.price}}</span>
+            </ul>
+            <ul>
+                <span class="quantity"> QUANTITY {{cartList.quantity}}</span>
+                <button mat-raised-button color="accent" (click)="openDialog(cartList)">ADD <mat-icon>add_shopping_cart
+                    </mat-icon></button>
+            </ul>
+            <div class="add-on">
+                <div *ngFor="let selection of cartList.selections" class="content">
+                    <span class="topping" style="width: 50%;"> Size {{selection.selectedSize}} </span>
+                    <span class="topping" style="text-align: right;"> Topping(s) {{selection.selectedTopping}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

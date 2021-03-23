@@ -1,0 +1,105 @@
+$font-family: SharpSansSemiBold, system-ui, BlinkMacSystemFont, Helvetica Neue, Helvetica, sans-serif;
+
+@mixin container-position {
+    width: 1080px;
+    padding: 16px;
+    margin: auto;
+}
+
+.sort-item {
+    @include container-position;
+    text-align: right;
+    .mat-slide-toggle {
+        margin-right: 5%;
+        position: relative;
+        bottom: 5px;
+    }
+    .mat-raised-button {
+        margin: 10px;
+    }
+}
+.pizza-items {
+    @include container-position;
+    font-weight: 800;
+    font-family: $font-family;
+    .pizza {
+        font-size: 28px;
+        color: #333333;
+        width: 85%;
+        display: inline-block;
+    }
+    .pizza-count {
+        font-size: 18px;
+        color: rgb(181, 181, 181);
+        line-height: 1.5;
+        white-space: nowrap;
+    }
+}
+.pizza-container {
+    @include container-position;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: grid;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+    .individual-item {
+        margin: 10% 0;
+        .pizza-title {
+            font-family: $font-family;
+            color: #000;
+            font-weight: 600;
+            padding: 10px 10px 6px;
+            flex: 1 1 0%;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        .pizza-description {
+            font-family: Open Sans, system-ui, BlinkMacSystemFont, Helvetica Neue, Helvetica, sans-serif;
+            line-height: 1.5;
+            font-size: 1rem;
+            flex: 1 1 0%;
+            width: 326px;
+            padding: 0 10px;
+        }
+        ngb-rating {
+            font-size: 30px;
+            color: #ffbf00;
+        }
+        .price {
+            font-family: $font-family;
+            display: inline;
+            font-size: 16px;
+            margin-left: 8px;
+            font-weight: 700;
+            color: rgb(51, 51, 51);
+        }
+        .mat-raised-button {
+            background: rgb(255, 255, 255);
+            color: rgb(191 52 40);
+            border-radius: 8px;
+            font-size: 14px;
+            padding: 0.25em 1.7em;
+            border: 1px solid rgb(191 52 40);
+            cursor: pointer;
+            font-weight: 700;
+            max-width: 150px;
+            overflow: hidden;
+            left: 45%;
+        }
+    }
+}
+.checkout {
+    text-align: center;
+    padding: 0.7rem;
+    font-weight: 800;
+    border: 0.0625rem solid #a41b1b;
+    background-color: #a41b1b;
+    border-radius: 0.3125rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    line-height: normal;
+    color: #fff;
+    top: 25px;
+    left: 80%;
+}
+.mb-4 {
+    margin-bottom: 4% !important;
+}

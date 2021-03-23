@@ -1,0 +1,16 @@
+.header {
+    box-shadow: rgb(0 0 0 / 30%) 0px 3px 5px 0px;
+    z-index: 3;
+    background: #fafafa;
+    position: relative;
+    width: 100%;
+    top: 0;
+    .logo {
+        display: block;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url(../assets/logo.PNG);
+        width: 130px;
+        height: 75px;
+    }
+}

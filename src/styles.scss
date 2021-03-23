@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: #fafafa;
+}
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.py-15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.pl-20 {
+    padding-left: 20px;
+}
+.pl-5 {
+    padding-left: 5%;
+}
+.ml-2 {
+    margin-left: 2px;
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+.mat-form-field-flex {
+    border: 1px solid #e2e2e2;
+    background: #ffff !important;
+    border-radius: 6px !important;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: Muli, sans-serif;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: rgba(0,0,0,.6);
+}
+.mat-dialog-container {
+    padding: 0 16px !important;
+}
+@import "~bootstrap/scss/bootstrap";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";

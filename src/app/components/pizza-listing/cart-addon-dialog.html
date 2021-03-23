@@ -1,0 +1,41 @@
+<div mat-dialog-actions>
+    <div class="pizza-img">
+        <div class="custom-container">
+            <div class="header"> {{data.size[0].title | uppercase }}</div>
+            <mat-radio-group [(ngModel)]="selectedSize">
+                <div class="grid-list" cols="3">
+                    <ul *ngFor="let radioBut of data.size[0].items">
+                        <mat-radio-button [value]="radioBut">
+                            {{radioBut.size}}
+                        </mat-radio-button>
+                    </ul>
+                </div>
+            </mat-radio-group>
+        </div>
+        <div class="custom-container">
+            <div class="header"> {{data.topping[0].title | uppercase}}</div>
+            <section *ngIf="!data.topping[0].isRadio">
+                <div class="list-section">
+                    <ul *ngFor="let item of data.topping[0].items">
+                        <mat-checkbox [(ngModel)]="item.checked">
+                            {{item.name}}
+                        </mat-checkbox>
+                    </ul>
+                </div>
+            </section>
+            <div *ngIf="data.topping[0].isRadio">
+                <mat-radio-group [(ngModel)]="selectedtopping">
+                    <mat-grid-list class="list-section">
+                        <ul *ngFor="let radioBut of data.topping[0].items">
+                            <mat-radio-button [value]="radioBut">
+                                {{radioBut.name}}
+                            </mat-radio-button>
+                        </ul>
+                    </mat-grid-list>
+                </mat-radio-group>
+            </div>
+        </div>
+        <button class="cancel" mat-button (click)="onNoClick()">CANCEL</button>
+        <button class="add" mat-button [disabled]="!selectedSize" (click)="onYesClick()">ADD TO
+            MY CART</button>
+    </div>
